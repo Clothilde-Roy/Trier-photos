@@ -1,3 +1,3 @@
 # Trier-photos
 
-Permet d'effacer les images identiques dans un fichier. 
+Permet de manipuler des photos pour les trier correctement (enlever les doubles par exemple)
