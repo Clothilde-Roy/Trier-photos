@@ -5,6 +5,7 @@ from exifread import process_file
 from datetime import datetime
 
 
+# Comparaison de 2 images pixel par pixel 
 def comparaison(im1, im2):
     #print("Taille 1 : ", im1.size, "Taille 2 : ", im2.size)
     if im1.size != im2.size:
@@ -17,6 +18,7 @@ def comparaison(im1, im2):
                 return 0
         return 1
 
+# Lister les fichiers présentant une certaine extension
 def lister_fichier(path, extension):
     fichiers = os.listdir(path)
     #print(fichiers)
@@ -27,9 +29,10 @@ def lister_fichier(path, extension):
         if len(ext) > 1:
             if ext[1] in extension:
                 result.append(i)
-
     return result
 
+
+# Changer le nom du fichier pour celui de sa date de prise de vue 
 def changer_nom(fichier, path):
     im = open(path+fichier, 'rb')
     tags = process_file(im)
@@ -57,9 +60,10 @@ def changer_nom(fichier, path):
             new_name = path+date+"."+ext[1]
             os.rename(path+fichier, new_name)
 
+
+# Regrouper les photos par années de prise de vue 
 def grouper_par_an(path,  fichiers):
-    nom_rep = ["2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020"]
-    #nom_rep = []
+    nom_rep = []
     for f in fichiers:
         an = f.split("_")[0]
         #print(an)
@@ -72,6 +76,8 @@ def grouper_par_an(path,  fichiers):
             #print(path + f, path + an + "/" + f)
             os.rename(path+f, path+an+"/"+f)
 
+
+# Convertir les images en jpg
 def conversion_to_jpg(path, fichier):
     image = PIL.Image.open(path+fichier)
     if not image.mode == 'RGB':
