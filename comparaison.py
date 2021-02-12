@@ -1,4 +1,4 @@
-import os
+limport os
 import PIL.Image
 import numpy as np
 from exifread import process_file

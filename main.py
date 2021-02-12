@@ -4,15 +4,14 @@ import time
 from datetime import timedelta
 
 
-path = "/Users/clothilde.royan/Desktop/Photos/"
-annee = "2019/"
-
+path = ""
+annee = ""
+extension = []
 
 
 # Main
-extension = ['jpg', 'JPG', 'jpeg']
-fichiers = lister_fichier(path+annee, extension)
 
+fichiers = lister_fichier(path+annee, extension)
 
 nb_fichier = len(fichiers)
 print(nb_fichier)
@@ -20,6 +19,7 @@ print(nb_fichier)
 a_sup = []
 
 for i in range(nb_fichier):
+    
     print("IMAGE N°"+str(i+1)+" sur "+str(nb_fichier))
     start_time = time.monotonic()
     if path+annee+fichiers[i] not in a_sup:
